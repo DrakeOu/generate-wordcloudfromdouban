@@ -17,6 +17,11 @@ class Sheng(object):
         files = os.listdir(path)
         return random.choice(files)
 
+    def get_font(self):
+        path = './font'
+        fonts = os.listdir(path)
+        return fonts[0]
+
     def get_content(self, filename):
         content = ''
         with open('./comments/{}/{}.txt'.format(filename, filename), 'r', encoding='utf-8') as f:
@@ -28,7 +33,7 @@ class Sheng(object):
 
     def function(self):
         graph = np.array(self.image)  # 获取矩形
-        wc = WordCloud(font_path='./msyhbd.ttf', background_color='White', max_words=50, mask=graph)
+        wc = WordCloud(font_path='./font/{}'.format(self.get_font()), background_color='White', max_words=50, mask=graph)
         # 字体路径，背景颜色，最大数量，选用背景矩阵
         content = self.get_content(self.filename)
         result = jieba.analyse.textrank(content, topK=50, withWeight=True)
