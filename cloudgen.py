@@ -29,7 +29,7 @@ class Sheng(object):
     def function(self):
         graph = np.array(self.image)  # 获取矩形
         wc = WordCloud(font_path='./msyhbd.ttf', background_color='White', max_words=50, mask=graph)
-        # 字体路径，背景颜色， 最大数量，选用背景矩阵
+        # 字体路径，背景颜色，最大数量，选用背景矩阵
         content = self.get_content(self.filename)
         result = jieba.analyse.textrank(content, topK=50, withWeight=True)
         keywords = dict()

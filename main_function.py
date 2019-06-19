@@ -1,22 +1,12 @@
-from douban import Spider
+from body import Spider
 import time
 from cloudgen import Sheng
 
-url = 'https://movie.douban.com/subject/25890017/'
-s = Spider(url, username='', password='')
-time.sleep(1)
-bs = s.safe_get(s.url)
-page = s.turn_shortcomment(bs)
+s = Spider(url='xxx', username='xxx', password='xxx')
+page = s.find_shortcomment()
 
 if page:
-    status = s.get_comments(page)
-    while status:
-        page = s.turn_page(page)
-        if page:
-            status = s.get_comments(page)
-            time.sleep(1)
-        else:
-            status = False
+    s.get_comments(page)
     s.save_comments()
-    cloud = Sheng(s.filmname)
+    cloud = Sheng(s.filmname)   # 使用pictures文件夹中的随机图片生成矩阵
     cloud.function()

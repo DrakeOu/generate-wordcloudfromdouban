@@ -1,0 +1,7 @@
+PIL
+numpy
+wordcloud
+jieba
+matplotlib
+bs4
+requests
